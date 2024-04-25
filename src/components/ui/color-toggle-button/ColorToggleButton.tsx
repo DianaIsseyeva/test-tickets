@@ -1,3 +1,4 @@
+import { styled } from '@mui/material';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import * as React from 'react';
@@ -10,12 +11,28 @@ const ColorToggleButton = ({ titles }: ColorToggleButtonProps) => {
     setAlignment(newAlignment);
   };
 
+  const CustomToggle = styled(ToggleButton)({
+    'color': '#2096f3',
+    '&:hover': {
+      color: '#2096f3',
+      backgroundColor: '#f2fcff', // Фон изменен на светло-голубой при наведении
+    },
+    '&.Mui-selected:hover': {
+      color: '#fff',
+      backgroundColor: '#2096f3',
+    },
+    '&.Mui-selected': {
+      color: '#fff',
+      backgroundColor: '#2096f3',
+    },
+  });
+
   return (
-    <ToggleButtonGroup color='primary' value={alignment} exclusive onChange={handleChange} aria-label='Platform'>
+    <ToggleButtonGroup value={alignment} exclusive onChange={handleChange} aria-label='Platform'>
       {titles.map((title, index) => (
-        <ToggleButton key={index} value={title}>
+        <CustomToggle key={index} value={title}>
           {title}
-        </ToggleButton>
+        </CustomToggle>
       ))}
     </ToggleButtonGroup>
   );
