@@ -1,10 +1,9 @@
-import './App.css';
+import classes from './App.module.scss';
+import { CurrencyArray } from './common/currencyEnum';
 import Sidebar from './components/sidebar/Sidebar';
-import { CurrencyArray } from './helper/currencyEnum';
-
 function App() {
   return (
-    <div className='App'>
+    <div className={classes.container}>
       <header className='App-header'>
         <Sidebar titles={CurrencyArray} />
       </header>
