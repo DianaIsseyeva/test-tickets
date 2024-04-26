@@ -46,13 +46,13 @@ const Sidebar = ({ titles }: ColorToggleButtonProps) => {
           control={<Checkbox checked={filters.all} onChange={handleFilterChange} name='all' />}
           label='Все'
           sx={{ ...getCheckboxStyle(filters.all) }}
-          className={classes.formControlLabel} // Применяем стили здесь
+          className={classes.formControlLabel}
         />
         <div className={`${classes.formControlLabel} flex items-center justify-between`}>
           <FormControlLabel
             control={<Checkbox checked={filters.noTransfers} onChange={handleFilterChange} name='noTransfers' />}
             label='Без пересадок'
-            sx={{ ...getCheckboxStyle(filters.noTransfers) }} // Применяем стили здесь
+            sx={{ ...getCheckboxStyle(filters.noTransfers) }}
           />
           {filters.noTransfers && <p className='text-[#2096f3]'>ТОЛЬКО</p>}
         </div>

@@ -15,7 +15,7 @@ const ColorToggleButton = ({ titles }: ColorToggleButtonProps) => {
     'color': '#2096f3',
     '&:hover': {
       color: '#2096f3',
-      backgroundColor: '#f2fcff', // Фон изменен на светло-голубой при наведении
+      backgroundColor: '#f2fcff',
     },
     '&.Mui-selected:hover': {
       color: '#fff',

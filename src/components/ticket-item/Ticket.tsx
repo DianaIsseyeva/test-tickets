@@ -1,4 +1,5 @@
-import { Button, Typography } from '@mui/material';
+import { Button } from '@mui/material';
+import TicketInfo from '../ticket-info/TicketInfo';
 
 const TicketItem = ({ ticket }: any) => {
   const getStopsLabel = (stops: number) => {
@@ -12,8 +13,8 @@ const TicketItem = ({ ticket }: any) => {
   };
 
   return (
-    <div className='flex justify-between mb-5 mx-5'>
-      <div className='mr-5'>
+    <div className='flex justify-between mb-5 mx-5 bg-white rounded-lg'>
+      <div className='mr-5 pr-5 border-r-2 border-[#f1f4f5] p-10'>
         <div>
           <img src='/logo.png' alt='logo' width={150} height={50} className='mb-3' />
         </div>
@@ -24,36 +25,30 @@ const TicketItem = ({ ticket }: any) => {
         >
           <div>
             <p>Купить</p>
-            <p>за {ticket.price}</p>
+            <p>за {ticket.price.toLocaleString()} ₽</p>
           </div>
         </Button>
       </div>
-      <div className='flex justify-between items-center shrink'>
-        <div>
-          <Typography variant='h4' gutterBottom>
-            {ticket.departure_time}
-          </Typography>
-          <p>
-            {ticket.origin},{ticket.origin_name}
-          </p>
-          <p className='text-[#b1b7ba]'>{ticket.departure_date}</p>
-        </div>
-        <div className='text-center'>
+      <div className='grid grid-cols-3 p-10'>
+        <TicketInfo
+          time={ticket.departure_time}
+          location={ticket.origin}
+          name={ticket.origin_name}
+          date={ticket.departure_date}
+        />
+        <div className='flex flex-col items-center justify-center'>
           <p>{ticket.stops ? getStopsLabel(ticket.stops) : 'Без пересадок'}</p>
-          <div className='flex items-center mx-5'>
-            <hr className='w-[200px]' /> <img src='/ticket-airplane.png' alt='icon' width={20} height={20} />
+          <div className='flex items-center justify-start  '>
+            <hr className='w-[200px] ali' /> <img src='/ticket-airplane.png' alt='icon' width={20} height={20} />
           </div>
         </div>
-        <div>
-          <div>
-            <Typography variant='h4' gutterBottom>
-              {ticket.arrival_time}
-            </Typography>
-            <p>
-              {ticket.destination},{ticket.destination_name}
-            </p>
-            <p className='text-[#b1b7ba]'>{ticket.arrival_date}</p>
-          </div>
+        <div className='items-end flex justify-end'>
+          <TicketInfo
+            time={ticket.arrival_time}
+            location={ticket.destination}
+            name={ticket.destination_name}
+            date={ticket.arrival_date}
+          />
         </div>
       </div>
     </div>
