@@ -5,9 +5,11 @@ import classes from './TicketsBlock.module.scss';
 const TicketsBlock = () => {
   return (
     <div className={classes.ticketsBlock}>
-      {tickets.tickets.map(ticket => (
-        <Ticket ticket={ticket} />
-      ))}
+      {tickets.tickets
+        .sort((a, b) => a.price - b.price)
+        .map(ticket => (
+          <Ticket ticket={ticket} />
+        ))}
     </div>
   );
 };
